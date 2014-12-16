@@ -7,13 +7,11 @@ try:
 except ImportError:
     from distutils.core import setup
 
-import diablo3api
-
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
-    'requests>=1.2.3'
+    'requests'
 ]
 
 test_requirements = [
@@ -22,7 +20,7 @@ test_requirements = [
 
 setup(
     name='diablo3api',
-    version=diablo3api.__version__,
+    version='0.1.0',
     description='A Python API Wrapper for the Diablo 3 API',
     long_description=readme + '\n\n' + history,
     author='David Lewis',
@@ -30,6 +28,7 @@ setup(
     url='https://github.com/menglewis/diablo3api',
     packages=[
         'diablo3api',
+        'tests',
     ],
     package_dir={'diablo3api':
                  'diablo3api'},
@@ -51,5 +50,5 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     test_suite='tests',
-    tests_require=test_requirements
+    tests_require=test_requirements,
 )
