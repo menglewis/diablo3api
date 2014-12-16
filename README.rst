@@ -21,4 +21,4 @@ Features
 --------
 
 * Provides an API wrapper for the current Diablo 3 API Resources.
-* Works with
+* Works with Python 2.6, 2.7, 3.3, 3.4.
