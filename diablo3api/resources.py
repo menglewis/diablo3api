@@ -10,8 +10,9 @@ class Resource(object):
     Base Class for a Diablo 3 Resource
     """
 
-    def __init__(self, api_host, session):
+    def __init__(self, api_host, session, api_key=None):
         self.api_host = api_host
+        self._api_key = api_key
         self.session = session
 
     def get(self, *args, **kwargs):
@@ -35,6 +36,8 @@ class Resource(object):
         :return:
         """
         url = self.build_url(*args, **kwargs)
+        if self._api_key:
+            url = '%s?apikey=%s' % (url, self._api_key)
         return self.session.get(url)
 
     def build_url(self, resource):
