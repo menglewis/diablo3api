@@ -11,13 +11,14 @@ class Diablo3API(object):
 
     API_HOST = "https://us.battle.net/api/d3"
 
-    def __init__(self, api_host=API_HOST):
+    def __init__(self, api_host=API_HOST, api_key=None):
         """
         :param api_host: The location of the Diablo 3 API
         """
         self.session = requests.Session()
         self.session.headers.update({'User-Agent': 'Diablo 3 Python API Wrapper', 'Accept': 'application/json'})
         self.api_host = api_host
+        self._api_key = api_key
 
         self.profile = self._register(Profile)
         self.item = self._register(Item)
@@ -30,4 +31,4 @@ class Diablo3API(object):
         :param resource:
         :return:
         """
-        return resource(self.api_host, self.session)
+        return resource(self.api_host, self.session, self._api_key)
